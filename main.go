@@ -1,9 +1,10 @@
 package main
 
-import (
-	"./something"
-)
+import "fmt"
 
 func main() {
-	 something.SayHello()
+	const hello string = "hello"
+	world := "world"
+	world = "World"
+	fmt.Println(world)
 }

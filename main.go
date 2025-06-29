@@ -1,10 +1,25 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"strings"
+)
+
+func multiply(a,b int) int{
+	return a*b
+}
+
+func lenAndUpper(name string) (int,string){
+	return len(name), strings.ToUpper(name)
+}
+
+func repeatMe(words ...string){
+	fmt.Println(words)
+}
 
 func main() {
-	const hello string = "hello"
-	world := "world"
-	world = "World"
-	fmt.Println(world)
+	fmt.Println(multiply(2,2))
+	totalLength,upperName := lenAndUpper("nico")
+	fmt.Println(totalLength,upperName)
+	repeatMe("hello","how","are","you")
 }

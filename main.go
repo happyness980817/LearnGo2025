@@ -5,21 +5,15 @@ import (
 	"strings"
 )
 
-func multiply(a,b int) int{
-	return a*b
-}
-
-func lenAndUpper(name string) (int,string){
-	return len(name), strings.ToUpper(name)
-}
-
-func repeatMe(words ...string){
-	fmt.Println(words)
+func lenAndUpper(name string) (length int, uppercase string){
+	defer fmt.Println("I'm done.") 
+	// defer - funtion 끝나고 해당 코드 실행
+	length = len(name)
+	uppercase = strings.ToUpper(name)
+	return
 }
 
 func main() {
-	fmt.Println(multiply(2,2))
-	totalLength,upperName := lenAndUpper("nico")
-	fmt.Println(totalLength,upperName)
-	repeatMe("hello","how","are","you")
+	totalLength, up := lenAndUpper("nico")
+	fmt.Println(totalLength,up)
 }

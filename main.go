@@ -3,14 +3,10 @@ package main
 import "fmt"
 
 func main() {
-	a := 2
-	b := &a // b 는 a 의 pointer 
-	a = 10
-	fmt.Println(a,b) // 10 0xc0000940a8
-	fmt.Println(a,*b) // 10 10
+	arrayOfNames := [5]string{"a", "b", "c", "d", "e"} // array
+	fmt.Println(arrayOfNames)
 
-	c := 1
-	d := &c
-	*d = 20
-	fmt.Println(c) // 20
+	sliceOfNames := []string{"a","b","c"} // slice
+	sliceOfNames = append(sliceOfNames,"d") // Append returns the updated slice.
+	fmt.Println(sliceOfNames)
 }

@@ -2,21 +2,22 @@ package main
 
 import (
 	"fmt"
-	mydict "learngo/mydict"
+	"learngo/mydict"
 )
 
 func main() {
 	dictionary := mydict.Dictionary{}
-	word := "hello"
-	definition := "Greetings!"
-	err := dictionary.Add(word,definition)
+	baseWord := "FirstWord"
+	dictionary.Add(baseWord,"First word")
+	dictionary.Search(baseWord)
+	dictionary.Delete(baseWord)
+	word, err := dictionary.Search(baseWord)
 	if err != nil {
 		fmt.Println(err)
+	} else {
+		fmt.Println(word)
 	}
-	hello, _ := dictionary.Search(word)
-	fmt.Println("word:", word, "definition:", hello)
-	err2 := dictionary.Add(word,definition)
-	if err2 != nil {
-		fmt.Println(err2)
-	}
+	err2 := dictionary.Delete("NotExistingWord")
+	fmt.Println(err2)
 }
+

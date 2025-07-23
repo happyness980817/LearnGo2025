@@ -18,8 +18,17 @@ func main() {
 		"https://www.facebook.com/",
 		"https://www.instagram.com/",
 	}
+	results := map[string]string{} // initialize results map
 	for _, url := range urls {
-		hitURL(url)
+		result := "OK"
+		err := hitURL(url)
+		if err != nil {
+			result = "FAILED"
+		}
+		results[url] = result
+	}
+	for url, result := range results {
+		fmt.Println(url, result)
 	}
 }
 
@@ -27,7 +36,7 @@ func hitURL(url string) error {
 	fmt.Println("Checking:", url)
 	resp, err := http.Get(url)
 	if err != nil || resp.StatusCode >= 400 {
-
+		fmt.Println(err)
 	}
 	return nil
 }

@@ -1,42 +1,18 @@
 package main
 
 import (
-	"errors"
 	"fmt"
-	"net/http"
+	"time"
 )
 
-var errRequestFailed = errors.New("Request failed")
-
 func main() {
-	urls := []string{
-		"https://www.airbnb.com/",
-		"https://www.google.com/",
-		"https://www.amazon.com/",
-		"https://www.reddit.com/",
-		"https://soundcloud.com/",
-		"https://www.facebook.com/",
-		"https://www.instagram.com/",
-	}
-	results := map[string]string{} // initialize results map
-	for _, url := range urls {
-		result := "OK"
-		err := hitURL(url)
-		if err != nil {
-			result = "FAILED"
-		}
-		results[url] = result
-	}
-	for url, result := range results {
-		fmt.Println(url, result)
-	}
-}
+	go deliciousCount("kimchi")
+	deliciousCount("pizza") 
+} // 실행시간 10초
 
-func hitURL(url string) error {
-	fmt.Println("Checking:", url)
-	resp, err := http.Get(url)
-	if err != nil || resp.StatusCode >= 400 {
-		fmt.Println(err)
+func deliciousCount(food string) {
+	for i := 0; i < 10; i++ {
+		fmt.Println(food, "is delicious",i)
+		time.Sleep(time.Second) 
 	}
-	return nil
 }
